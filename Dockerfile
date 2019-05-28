@@ -1,12 +1,14 @@
 ## -*- docker-image-name: "sje30/simpleR2019" -*-
-FROM rocker/r-ver:3.4.4
+##FROM rocker/r-ver:3.4.4
+FROM rocker/tidyverse
 MAINTAINER Stephen Eglen <sje30@cam.ac.uk>
 
-RUN apt-get -y install git-core make
+RUN apt-get -y install  make
 
 ## Prerequisites
-RUN Rscript -e 'install.packages(c("ggplot2"))'
+## RUN Rscript -e 'install.packages(c("ggplot2"))'
 
+## RUN apt-get -y install  git
 
 ENV PROJ /home/stephen/simpleR2019
 RUN mkdir -p $PROJ
@@ -30,10 +32,15 @@ RUN cp *Rout codecheck
 ##    cp $file_name codecheck
 ## done
 
-done
 
+## fixme -- docker tag must be lowercase 
 ## TO REBUILD
-#  docker build -t sje30/simpleR2019 .
+#  docker build -t sje30/simpler2019 .
 ## TO RUN
-#  docker run --name road -it sje30/simpleR2019 bash
+#  docker run --name road -it sje30/simpler2019 bash
+
+## Problems to fix
+## 1. where is git in basic ubuntu?
+## 2. Using tidyverse here is a bit of a cheat (but okay for getting things working)
+
 
