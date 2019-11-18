@@ -23,15 +23,11 @@ RUN date > codecheck/date.txt
 RUN uname -a > codecheck/uname.txt
 
 ## HACK!  How to do this from MANIFEST?
-RUN cp *pdf codecheck
-RUN cp *csv codecheck
-RUN cp *Rout codecheck
+# RUN cp *pdf codecheck
+# RUN cp *csv codecheck
+# RUN cp *Rout codecheck
 
-## something like:
-## for file_name in $(cat MANIFEST); do
-##    cp $file_name codecheck
-## done
-
+RUN xargs -a MANIFEST cp -t codecheck/
 
 ## fixme -- docker tag must be lowercase 
 ## TO REBUILD
